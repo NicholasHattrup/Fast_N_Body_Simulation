@@ -50,7 +50,7 @@ class Node:
 
 
 
-class QuadTree:
+class QuadTreeRecursion:
     def __init__(self):
         self.root = None
         self.maxDepth = None
@@ -64,6 +64,37 @@ class QuadTree:
         self.root = Node()
         self.root.buildNode(self.particles, [self.xMin, self.xMax, self.yMin, self.yMax], self.maxParticles)
 
+class QuadTreeIterative:
+    def __init__(self):
+        self.root = None
+        self.maxDepth = None
+        self.maxParticles = None
+        self.particles = None
+        self.xMin = None
+        self.xMax = None
+        self.yMin = None
+        self.yMax = None
+    def buildTree(self):
+        self.root = Node()
+        remainingParticles = [particle for particle in self.particles]
+        if len(remainingParticles) == 0:
+            self.root.isLeaf = True
+            self.children = None
+            self.bounds = [self.xMin, self.xMax, self.yMin, self.yMax]
+        elif len(remainingParticles) == 1:
+            self.root.isLeaf = True
+            self.children = None
+            self.bounds = [self.xMin, self.xMax, self.yMin, self.yMax]
+            self.root.particles = remainingParticles
+        else:
+            while len(remainingParticles) > 0:
+                
+
+
+# self.isLeaf = False 
+# self.children = None
+# self.particles = None
+# self.bounds = None
 
 # Test code
 
@@ -71,6 +102,7 @@ class QuadTree:
 import random
 import matplotlib.pyplot as plt
 import time
+
 
 def generateParticles(n, xMin, xMax, yMin, yMax, seed = None):
     if seed != None:
@@ -163,7 +195,7 @@ seed = 42069
 particles = generateParticles(10, xMin, xMax, yMin, yMax, seed)
 
 # Now build the tree
-quadTree = QuadTree()
+quadTree = QuadTreeRecursion()
 quadTree.particles = particles
 quadTree.xMin = xMin
 quadTree.xMax = xMax
