@@ -6,6 +6,8 @@
 # unmodified version of this file!
 #
 
+CXX := clang++
+
 OUTPUTDIR := bin/
 
 CFLAGS := -std=c++14 -fvisibility=hidden -lpthread

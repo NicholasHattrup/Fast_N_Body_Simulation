@@ -14,8 +14,7 @@ class SequentialNBodySimulator : public INBodySimulator {
 public:
   std::unique_ptr<QuadTreeNode> buildQuadTree(std::vector<Particle> &particles,
                                               Vec2 bmin, Vec2 bmax) {
-    // TODO: implement a function that builds and returns a quadtree containing
-    // particles.
+    
     return nullptr;
   }
   virtual std::unique_ptr<AccelerationStructure>
